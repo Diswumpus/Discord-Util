@@ -1,0 +1,23 @@
+{
+  "name": "discord-util",
+  "version": "1.0.0",
+  "description": "Discord Util - Embed pages, fun commands, utils, and so much more!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pepperbot-Development/Discord-Util.git"
+  },
+  "keywords": [],
+  "author": "Turtlepaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pepperbot-Development/Discord-Util/issues"
+  },
+  "homepage": "https://github.com/Pepperbot-Development/Discord-Util#readme",
+  "dependencies": {
+    "discord.js": "^13.2.0"
+  }
+}
