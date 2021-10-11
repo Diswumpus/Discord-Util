@@ -1,6 +1,6 @@
 {
   "name": "discord.js-util",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Discord Util - Embed pages, fun commands, utils, and so much more!",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/Pepperbot-Development/Discord-Util.git"
   },
-  "keywords": ["Discord Pages", "Discord-Pages", "Discord.js"],
+  "keywords": [
+    "Discord Pages",
+    "Discord-Pages",
+    "Discord.js"
+  ],
   "author": "Turtlepaw",
   "license": "ISC",
   "bugs": {
