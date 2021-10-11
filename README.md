@@ -32,6 +32,15 @@ const timestamp = new du.timestamp()
 .setStyle("NONE") //Set the timestamp style
 .toString() //Returns the timestamp
 ```
+## Context Menu Builder
+```js
+const du = require('discord.js-util');
+
+const menu = new du.ContextMenuBuilder()
+.setName("Avatar") //Context menu name {String}
+.setType("USER") //Context menu type {du.ContextMenuBuilderTypes}
+.toJSON() //Same as SlashCommandBuilder.toJSON() (Returns raw json for Discord)
+```
 
 ## Support & Bugs
 To report a bug go [here.](https://github.com/Pepperbot-Development/Discord-Util/issues)

@@ -1,7 +1,7 @@
 {
   "name": "discord.js-util",
   "version": "2.1.1",
-  "description": "Discord Util - Embed pages, fun commands, utils, and so much more!",
+  "description": "Discord Util - Embed pages, fun commands, utils, context menu builder, and so much more!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
