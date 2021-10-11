@@ -19,8 +19,8 @@ class ContextMenuBuilder {
          * @type {Object}
          */
         this.data = {
-            name: data.name||null,
-            type: types[data.type]||null
+            name: data?.name||null,
+            type: types[data?.type]||null
         }
     }
 
