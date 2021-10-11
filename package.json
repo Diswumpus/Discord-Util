@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Pepperbot-Development/Discord-Util.git"
   },
-  "keywords": [],
+  "keywords": ["Discord Pages", "Discord-Pages", "Discord.js"],
   "author": "Turtlepaw",
   "license": "ISC",
   "bugs": {

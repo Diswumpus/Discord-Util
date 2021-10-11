@@ -5,7 +5,7 @@
 - Discord.js v13
 - Node v16.6.0
 # Examples
-## Pages:
+## Pages
 ```js
 const du = require('discord.js-util');
 
@@ -18,9 +18,9 @@ const pages = new du.pages()
     new Discord.MessageEmbed()
     .setTitle("Page 2")
     .setColor("RANDOM")
-]) //Set the pages
-.setEmojis("⬅️", "➡️") //The emojis for the buttons
-.send() //**Replys to the interaction**
+]) //Array of Discord MessageEmbeds
+.setEmojis("⬅️", "➡️") //Back emoji, foward emoji
+.send() //Replys to the interaction or edits the interaction
 ```
 ## Timestamps
 - [Timestamp Styles](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles)
