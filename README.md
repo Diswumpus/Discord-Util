@@ -32,6 +32,14 @@ const timestamp = new du.timestamp()
 .setStyle("NONE") //Set the timestamp style
 .toString() //Returns the timestamp
 ```
+## Memes
+```js
+const du = require('discord.js-util');
+
+const meme = await du.fetchMeme(); //Returns raw data
+//You can turn the raw data into an embed:
+const embed = du.embedMeme(meme); //Returns Discord MessageEmbed
+```
 ## Context Menu Builder
 ```js
 const du = require('discord.js-util');
