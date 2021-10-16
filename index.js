@@ -8,6 +8,7 @@ module.exports = {
         "MESSAGE": 3,
         "USER": 2,
     },
+    //quiz: require('./classes/quiz'),
     ContextMenuBuilderTypesArr: ["MESSAGE", "USER"],
     fetchMeme: require('./functions/fetchMeme'),
     embedMeme: require('./functions/embedMeme'),

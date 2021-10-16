@@ -68,7 +68,6 @@ class Pages {
      */
     setFilter(filter){
         if(!filter) throw new TypeError("filter is a required args")
-        if(filter instanceof Function) throw new TypeError("filter must be a function")
         this.filter = filter
         return this
     }
@@ -106,7 +105,6 @@ class Pages {
      */
     setInteraction(interaction){
         if(!interaction) throw new TypeError("interaction is a required args")
-        if(interaction instanceof Discord.Interaction) throw new TypeError("interaction must be a Discord.js interaction")
         this.interaction = interaction
         return this
     }
