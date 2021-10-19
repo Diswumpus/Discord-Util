@@ -12,4 +12,5 @@ module.exports = {
     ContextMenuBuilderTypesArr: ["MESSAGE", "USER"],
     fetchMeme: require('./functions/fetchMeme'),
     embedMeme: require('./functions/embedMeme'),
+    uploadEmoji: require('./functions/uploadEmoji'),
 }
