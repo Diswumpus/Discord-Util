@@ -1,6 +1,6 @@
 {
   "name": "discord.js-util",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "description": "Discord Util - Embed pages, fun commands, utils, context menu builder, and so much more!",
   "main": "index.js",
   "scripts": {
