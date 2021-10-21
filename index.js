@@ -13,4 +13,5 @@ module.exports = {
     fetchMeme: require('./functions/fetchMeme'),
     embedMeme: require('./functions/embedMeme'),
     uploadEmoji: require('./functions/uploadEmoji'),
+    DiscordMessageEmbed: require('./classes/DiscordMessage'),
 }

@@ -44,9 +44,12 @@ class quiz {
         }
         const EmojiGuild = new EmojiServer()
             .setClient(this.interaction.client)
-            .create();
-        const emoji1 = await EmojiGuild.uploadEmoji({ name: "check", link: emojis.check });
-        const emoji2 = await EmojiGuild.uploadEmoji({ name: "xmark", link: emojis.xmark });
+            let emoji1
+            let emoji2
+        const createEmoji = await EmojiGuild.create().then(async () => {
+            emoji1 = await EmojiGuild.uploadEmoji({ name: "check", link: emojis.check });
+            emoji2 = await EmojiGuild.uploadEmoji({ name: "xmark", link: emojis.xmark });
+        })
         let trysUsed = 5;
         let i = 0;
         const collector = this.interaction.channel.createMessageCollector({ max: 5, errors: ['time'] });

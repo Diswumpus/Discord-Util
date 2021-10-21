@@ -11,6 +11,8 @@ class EmojiServer {
          * @type {Discord.Guild}
          */
         this.server = null
+
+        this.ready = false
         /**
          * The client.
          * @type {Discord.Client}
@@ -32,28 +34,36 @@ class EmojiServer {
      * @private
      */
     async init(){
-        this.server = await this.fetchServer(true);
+        this.server = await this.fetchServer();
+        this.ready = true
+        return this
     }
 
     /**
      * Creates the server.
-     * @returns {Discord.Guild}
+     * @returns {Promise<Discord.Guild>}
      */
     async create(){
-        await this.init();
+        if(!this.ready) await this.init();
         const fetchedGuild = await this.fetchServer();
         if(fetchedGuild?.name) return fetchedGuild;
         const guild = await this.client.guilds.create("Discord.js Util Emojis", {
             channels: [{ name: "general", type: "GUILD_TEXT" }]
         })
-        const channel = await guild.channels.cache.first()
+        /**
+         * @type {Discord.TextChannel}
+         */
+        const channel = guild.channels.cache.first()
         /**
          * @type {Discord.Invite}
          */
-        const invite = await channel.createInvite();
-
-        let owner = this.client.application.owner;
+        const invite = await channel.createInvite({
+            maxAge: 0,
+            maxUses: 0
+        });
+        let owner = (await this.client.application.fetch()).owner;
         if(!owner?.tag) owner = this.client.users.cache.get(owner.ownerId);
+        console.log(`Owner:`, owner)
         owner.send({ content: `Discord.js Util created an emoji server: ${invite.url}`})
 
         return guild;
@@ -64,10 +74,8 @@ class EmojiServer {
      * @param {Boolean} force
      * @returns {Discord.Guild|null}
      */
-    async fetchServer(force){
-        await this.init();
+    fetchServer(){
         let guild = this.client.guilds.cache.find(g => g.name === "Discord.js Util Emojis");
-        if(!guild && force === true) guild = await this.create();
         
         return guild
     }
@@ -80,6 +88,7 @@ class EmojiServer {
      * @returns {Discord.GuildEmoji}
      */
     async uploadEmoji(emoji){
+        if(!this.ready) await this.init();
         const uploadedEmoji = await this.server.emojis.create(emoji.link, emoji.name);
         return uploadedEmoji;
     }

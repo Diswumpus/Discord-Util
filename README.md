@@ -49,8 +49,19 @@ const menu = new du.ContextMenuBuilder()
 .setType("USER") //Context menu type {du.ContextMenuBuilderTypes}
 .toJSON() //Same as SlashCommandBuilder.toJSON() (Returns raw json for Discord)
 ```
+## Discord Message Embed
+The `DiscordMessageEmbed` class creates an embed and component based on the message.
+```js
+const du = require('discord.js-util');
 
-## Support & Bugs
+const message = await (await interaction.channel.messages.fetch()).first();
+const embedData = new du.DiscordMessageEmbed()
+.setMessage(message)
+const embed = await DiscordEmbed.create("GREEN") //Returns Discord.InteractionReplyOptions ({ embeds: [], components: [] })
+await interaction.reply(embed)
+```
+
+# Support & Bugs
 To report a bug go [here.](https://github.com/Pepperbot-Development/Discord-Util/issues)
 
 For support join [this](https://discord.gg/Fv9WDngH7n) server.
