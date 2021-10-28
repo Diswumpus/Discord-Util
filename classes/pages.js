@@ -111,8 +111,10 @@ class Pages {
 
     /**
      * Sends the pages.
+     * @param {Object} options
+     * @param {Boolean} [options.ephemeral]
      */
-    send(){
+    send(options){
         let { interaction, collectorTime, filter, pages, pageNumber, buttons } = this;
 
         const rows = [
@@ -137,7 +139,10 @@ class Pages {
             rows[0].components[0].setLabel(buttons.labels[0])
             rows[0].components[1].setLabel(buttons.labels[1])
         }
-        const payload = { embeds: [pages[0]], components: rows }
+        /**
+         * @type {Discord.InteractionReplyOptions}
+         */
+        const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral }
         if(interaction.isCommand()) {
             if(interaction.replied){
                 interaction.editReply(payload)
