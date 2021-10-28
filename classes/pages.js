@@ -114,7 +114,7 @@ class Pages {
      * @param {Object} options
      * @param {Boolean} [options.ephemeral]
      */
-    send(options){
+    send(options={ephemeral: false}){
         let { interaction, collectorTime, filter, pages, pageNumber, buttons } = this;
 
         const rows = [
