@@ -12,16 +12,29 @@ class ContextMenuBuilder {
      * @param {Object} data 
      * @param {String} [data.name]
      * @param {"MESSAGE"|"USER"} [data.type]
+     * @param {Boolean} [data.default_permission]
      */
     constructor(data){
         /**
          * The data for the context menu.
-         * @type {Object}
          */
         this.data = {
             name: data?.name||null,
-            type: types[data?.type]||null
+            type: types[data?.type]||null,
+            default_permission: data.default_permission||true
         }
+    }
+
+    /**
+     * Set the context menu `default_permission`.
+     * @param {Boolean} v 
+     * @returns {ContextMenuBuilder}
+     */
+    setDefaultPermission(v){
+        if(typeof v !== "boolean") throw new TypeError("v must be a boolean")
+        if(!v) throw new TypeError("v is a required arg")
+        this.data.default_permission = v
+        return this;
     }
 
     /**
