@@ -21,7 +21,7 @@ class ContextMenuBuilder {
         this.data = {
             name: data?.name||null,
             type: types[data?.type]||null,
-            default_permission: data.default_permission||true
+            default_permission: data?.default_permission||true
         }
     }
 
