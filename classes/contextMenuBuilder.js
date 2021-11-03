@@ -32,7 +32,7 @@ class ContextMenuBuilder {
      */
     setDefaultPermission(v){
         if(typeof v !== "boolean") throw new TypeError("v must be a boolean")
-        if(!v) throw new TypeError("v is a required arg")
+        if(![true, false].includes(v)) throw new TypeError("v is a required arg")
         this.data.default_permission = v
         return this;
     }
