@@ -23,7 +23,8 @@ const colors = {
     12370112: "LIGHT_GREY",
     3426654: "NAVY",
     2899536: "DARK_NAVY",
-    16776960: "YELLOW"
+    16776960: "YELLOW",
+    7506394: "BLURPLE"
 }
 
 module.exports = (color) => {
