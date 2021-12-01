@@ -144,12 +144,12 @@ class Pages {
          */
         const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral, fetchReply: true }
         let replyMessage;
-        if(interaction?.isCommand()) {
+        if(interaction?.author){
+            replyMessage = await interaction.channel.send(payload)
+        } else if(interaction?.isCommand()) {
             if(interaction.replied){
                 replyMessage = await interaction.editReply(payload)
             } else replyMessage = await interaction.reply(payload)
-        } else if(interaction?.author){
-            replyMessage = await interaction.channel.send(payload)
         } else replyMessage = await interaction.update(payload)
 
         const collector = interaction.channel.createMessageComponentCollector({ filter: filter });
