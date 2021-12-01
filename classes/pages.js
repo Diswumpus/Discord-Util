@@ -142,12 +142,15 @@ class Pages {
         /**
          * @type {Discord.InteractionReplyOptions}
          */
-        const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral }
-        if(interaction.isCommand()) {
+        const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral, fetchReply: true }
+        let replyMessage;
+        if(interaction?.isCommand()) {
             if(interaction.replied){
-                interaction.editReply(payload)
-            } else interaction.reply(payload)
-        } else interaction.update(payload)
+                replyMessage = await interaction.editReply(payload)
+            } else replyMessage = await interaction.reply(payload)
+        } else if(interaction?.author){
+            replyMessage = await interaction.channel.send(payload)
+        } else replyMessage = await interaction.update(payload)
 
         const collector = interaction.channel.createMessageComponentCollector({ filter: filter });
 
