@@ -147,7 +147,7 @@ class Pages {
         if(interaction?.author){
             replyMessage = await interaction.channel.send(payload)
         } else if(interaction?.isCommand()) {
-            if(interaction.replied){
+            if(interaction.replied || interaction.deferred){
                 replyMessage = await interaction.editReply(payload)
             } else replyMessage = await interaction.reply(payload)
         } else replyMessage = await interaction.update(payload)
