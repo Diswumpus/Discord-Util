@@ -4,7 +4,8 @@
   "description": "Discord Util - Embed pages, fun commands, utils, context menu builder, and so much more!",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"No tests!\""
+    "test": "echo \"No tests!\"",
+    "ddocs": "node ./tests/ddocs.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   "dependencies": {
     "axios": "^0.23.0",
     "discord.js": "^13.2.0",
-    "docsify-cli": "^4.4.3"
+    "docsify-cli": "^4.4.3",
+    "html-entities": "^2.3.2",
+    "querystring": "^0.2.1"
   }
 }
