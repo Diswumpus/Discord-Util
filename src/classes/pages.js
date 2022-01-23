@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const DjsUtilError = require('../DJS_Util_Error');
+const { v4: uuid } = require("uuid");
 function verifyButton(val, arg){
     if(val == null) throw new DjsUtilError(`Expected a string for '${arg}', recieved ${typeof val}`, `ARG_INVALID`);
     if(!["DANGER", "PRIMARY", "SECONDARY", "SUCCESS"].includes(val)) throw new DjsUtilError(`Invalid style`, `MESSAGE_BUTTON_STYLE_INVALID`)
@@ -53,14 +54,21 @@ class Pages {
          this.secondary_style = "PRIMARY";
     }
 
+    /**
+     * Sets the button styles.
+     * @param {"DANGER" | "PRIMARY" | "SECONDARY" | "SUCCESS"} primary 
+     * @param {"DANGER" | "PRIMARY" | "SECONDARY" | "SUCCESS"} secondary 
+     * @returns {Pages}
+     */
     setStyles(primary, secondary){
         verifyButton(primary, `primary`);
         verifyButton(secondary, `secondary`);
-        
+
         this.primary_style = primary
         this.secondary_style = secondary
         return this;
     }
+
     /**
      * Set the pages.
      * @param  {Discord.MessageEmbed[]} pages
@@ -75,7 +83,7 @@ class Pages {
     }
 
     /**
-     * Set the collector time.
+     * Set the collector time. Default is never.
      * @param {Number} time 
      * @returns {Pages}
      */
@@ -138,37 +146,52 @@ class Pages {
      * Sends the pages.
      * @param {Object} options
      * @param {Boolean} [options.ephemeral]
+     * @param {Boolean} [options.forceEnabledButtons]
      */
-    async send(options={ephemeral: false}){
+    async send(options={ ephemeral: false, forceEnabledButtons: false }){
         let { interaction, collectorTime, filter, pages, pageNumber, buttons } = this;
+        const defaults_IDs = {
+            left: "djs_util_pages_left" + uuid(),
+            right: "djs_util_pages_right" + uuid(),
+            center: "djs_util_pages_counter" + uuid()
+        };
+        const isDisabled = () => {
+            if(options.forceEnabledButtons) return false;
+            if(pages.length <= 1) return true;
+            return false;
+        };
 
         const rows = [
             new Discord.MessageActionRow()
             .addComponents(
                 new Discord.MessageButton()
-                .setCustomId('<')
+                .setCustomId(defaults_IDs.left)
                 .setEmoji(buttons.emojis[0])
-                .setStyle("SECONDARY"),
+                .setStyle(this.primary_style)
+                .setDisabled(isDisabled()),
                 new Discord.MessageButton()
-                .setCustomId('dont-touch')
+                .setCustomId(defaults_IDs.center)
                 .setDisabled(true)
                 .setLabel(`1 of ${pages.length}`)
-                .setStyle("SECONDARY"),
+                .setStyle(this.secondary_style),
                 new Discord.MessageButton()
-                .setCustomId('>')
+                .setCustomId(defaults_IDs.right)
                 .setEmoji(buttons.emojis[1])
-                .setStyle("SECONDARY"),
+                .setStyle(this.primary_style)
+                .setDisabled(isDisabled()),
             )
         ]
+
         if(buttons.labels[0] && buttons.labels[1]){
             rows[0].components[0].setLabel(buttons.labels[0])
             rows[0].components[1].setLabel(buttons.labels[1])
         }
+        
         /**
          * @type {Discord.InteractionReplyOptions}
          */
         const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral, fetchReply: true }
-        let replyMessage;
+
         if(interaction?.author){
             replyMessage = await interaction.channel.send(payload)
         } else if(interaction?.isCommand()) {
@@ -177,11 +200,12 @@ class Pages {
             } else replyMessage = await interaction.reply(payload)
         } else replyMessage = await interaction.update(payload)
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter: filter });
+        const collector = interaction.channel.createMessageComponentCollector({ filter });
 
         collector.on("collect", async i => {
             if(!i.isButton()) return
-            if(i.customId === "<"){
+            
+            if(i.customId === defaults_IDs.left){
                 if (pages.length === 1) {
                     //...
                 } else if (pageNumber === 0) {
@@ -192,7 +216,7 @@ class Pages {
 
                 rows[0].components[1].setLabel(`${pageNumber+1} of ${pages.length}`)
                 i.update({ embeds: [pages[pageNumber]], components: rows }).catch(( )=>{ });
-            } else if(i.customId === ">"){
+            } else if(i.customId === defaults_IDs.right){
                 if (pages.length === 1) {
                     //...
                 } else if (pageNumber + 1 === pages.length) {

@@ -27,6 +27,7 @@
     "discord.js": "^13.2.0",
     "docsify-cli": "^4.4.3",
     "html-entities": "^2.3.2",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "uuid": "^8.3.2"
   }
 }
