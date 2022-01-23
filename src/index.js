@@ -15,4 +15,5 @@ module.exports = {
     uploadEmoji: require('./functions/uploadEmoji'),
     DiscordMessageEmbed: require('./classes/DiscordMessage'),
     intToDiscordColor: require('./functions/toDiscordColor'),
+    fetchDjsDocs: require("./functions/fetchDjsDocs"),
 }

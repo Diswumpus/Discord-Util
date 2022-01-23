@@ -1,4 +1,9 @@
 const Discord = require('discord.js');
+const DjsUtilError = require('../DJS_Util_Error');
+function verifyButton(val, arg){
+    if(val == null) throw new DjsUtilError(`Expected a string for '${arg}', recieved ${typeof val}`, `ARG_INVALID`);
+    if(!["DANGER", "PRIMARY", "SECONDARY", "SUCCESS"].includes(val)) throw new DjsUtilError(`Invalid style`, `MESSAGE_BUTTON_STYLE_INVALID`)
+}
 
 class Pages {
     constructor(pages){
@@ -34,8 +39,28 @@ class Pages {
          * @type {Discord.MessageEmbed[]}
          */
         this.pages = pages||null;
+
+        /**
+         * The primary button color.
+         * @type {Discord.MessageButtonStyle}
+         */
+        this.primary_style = "SECONDARY";
+
+        /**
+         * The secondary button color.
+         * @type {Discord.MessageButtonStyle}
+         */
+         this.secondary_style = "PRIMARY";
     }
 
+    setStyles(primary, secondary){
+        verifyButton(primary, `primary`);
+        verifyButton(secondary, `secondary`);
+        
+        this.primary_style = primary
+        this.secondary_style = secondary
+        return this;
+    }
     /**
      * Set the pages.
      * @param  {Discord.MessageEmbed[]} pages
@@ -43,10 +68,10 @@ class Pages {
      */
     setPages(pages){
         if(!pages) throw new TypeError("pages is a required args")
-        if(pages instanceof Discord.MessageEmbed) throw new TypeError("pages must be a Discord.js MessageEmbed")
+        //if(pages instanceof Discord.MessageEmbed) throw new TypeError("pages must be a Discord.js MessageEmbed")
         if(!Array.isArray(pages)) throw new TypeError("pages must be an Array")
         this.pages = pages
-        return this
+        return this;
     }
 
     /**
