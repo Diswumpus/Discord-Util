@@ -46,7 +46,7 @@ module.exports = async (forValue, template, textPerPagePercent=5) => {
                 Embeds.push(new Discord.MessageEmbed().setDescription(text));
             }
 
-            return pages;
+            return Embeds;
         }
     };
 };
