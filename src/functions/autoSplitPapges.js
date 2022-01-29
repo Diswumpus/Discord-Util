@@ -39,5 +39,15 @@ module.exports = async (forValue, template, textPerPagePercent=5) => {
     if (currentPage.length > 0)
         pages.push(currentPage)
 
-    return pages;
+    return {
+        raw: pages,
+        toEmbeds: () => {
+            const Embeds = [];
+            for(const text of pages){
+                Embeds.push(new Discord.MessageEmbed().setDescription(text));
+            }
+
+            return pages;
+        }
+    };
 };
