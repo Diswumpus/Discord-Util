@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"No tests!\"",
-    "ddocs": "node ./tests/ddocs.js"
+    "ddocs": "node ./tests/ddocs.js",
+    "split": "node ./tests/splitPages.js"
   },
   "repository": {
     "type": "git",

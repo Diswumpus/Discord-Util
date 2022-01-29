@@ -35,6 +35,7 @@ module.exports = async (forValue, template, textPerPagePercent=5) => {
             currentPage = []
         }
     }
+    
     if (currentPage.length > 0)
         pages.push(currentPage)
 
