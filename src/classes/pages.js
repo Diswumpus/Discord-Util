@@ -192,6 +192,8 @@ class Pages {
          */
         const payload = { embeds: [pages[0]], components: rows, ephemeral: options.ephemeral, fetchReply: true }
 
+        let replyMessage;
+        
         if(interaction?.author){
             replyMessage = await interaction.channel.send(payload)
         } else if(interaction?.isCommand()) {
