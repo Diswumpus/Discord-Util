@@ -16,4 +16,5 @@ module.exports = {
     DiscordMessageEmbed: require('./classes/DiscordMessage'),
     intToDiscordColor: require('./functions/toDiscordColor'),
     fetchDjsDocs: require("./functions/fetchDjsDocs"),
+    splitPages: require("./functions/autoSplitPapges"),
 }
