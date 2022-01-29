@@ -13,7 +13,6 @@ const DjsUtilError = require("../DJS_Util_Error");
  * @param {IterableIterator} forValue 
  * @param {TemplateFunction} template 
  * @param {Number} textPerPagePercent 
- * @returns {String[]}
  */
 module.exports = async (forValue, template, textPerPagePercent=5) => {
     const embeds = [];
