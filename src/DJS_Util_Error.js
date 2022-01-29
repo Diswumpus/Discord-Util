@@ -19,3 +19,7 @@ module.exports = class DjsUtilError extends Error {
       this.name = `DjsUtilError [${header}]`;
     }
   }
+  
+  module.exports.Errors = {
+    "INVALID_ARG": "INVALID_ARG",
+  }
