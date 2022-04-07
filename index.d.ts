@@ -47,12 +47,12 @@ export class timestamp {
      * Set the timestamp time.
      * @example setTime(member.joinedTimestamp + Date.now())
      */
-    setTime(time: number): Timestamp;
+    setTime(time: number): timestamp;
 
     /**
      * Set the timestamp style.
      */
-    setStyle(style: TimestampStyle): Timestamp;
+    setStyle(style: TimestampStyle): timestamp;
 
     /**
      * Returns the unix timestamp time.
@@ -78,37 +78,37 @@ export class pages {
     /**
      * Sets the button styles.
      */
-    setStyles(primary: ButtonStyle, secondary: ButtonStyle): Pages;
+    setStyles(primary: ButtonStyle, secondary: ButtonStyle): pages;
 
     /**
      * Set the pages.
      */
-    setPages(pages: MessageEmbed[]): Pages;
+    setPages(pages: MessageEmbed[]): pages;
 
     /**
      * Set the collector time. Default is never.
      */
-    setCollectorTime(time: string): Pages;
+    setCollectorTime(time: string): pages;
 
     /**
      * Set the collector function.
      */
-    setFilter(filter: (i: Interaction) => boolean): Pages;
+    setFilter(filter: (i: Interaction) => boolean): pages;
 
     /**
      * Set the button emojis.
      */
-    setEmojis(emoji1: string, emoji2: string): Pages;
+    setEmojis(emoji1: string, emoji2: string): pages;
 
     /**
      * Set the button labels.
      */
-    setLabels(label1: string, label2: string): Pages;
+    setLabels(label1: string, label2: string): pages;
 
     /**
      * Set the channel that the pages will be sent in.
      */
-    setInteraction(channel: Interaction): Pages;
+    setInteraction(channel: Interaction): pages;
 
     /**
      * Sends the pages.
