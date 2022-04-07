@@ -1,4 +1,4 @@
-const split = require("../src/functions/autoSplitPapges");
+const { } = require("../src/");
 
 (async () => {
     const res = await split(["Discord", "Twitter"], (v) => `I'm on ${v}!`);

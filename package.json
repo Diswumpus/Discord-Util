@@ -1,13 +1,9 @@
 {
   "name": "discord.js-util",
   "version": "4.2.0",
-  "description": "Discord Util - Embed pages, fun commands, utils, context menu builder, and so much more!",
+  "description": "Embed pages, fun commands, utils, context menu builder, and so much more!",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"No tests!\"",
-    "ddocs": "node ./tests/ddocs.js",
-    "split": "node ./tests/splitPages.js"
-  },
+  "types": "src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Pepperbot-Development/Discord-Util.git"
@@ -28,6 +24,7 @@
     "discord.js": "^13.2.0",
     "docsify-cli": "^4.4.3",
     "html-entities": "^2.3.2",
+    "jest": "^27.5.1",
     "querystring": "^0.2.1",
     "uuid": "^8.3.2"
   }
