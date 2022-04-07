@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Pepperbot-Development/Discord-Util#readme",
   "dependencies": {
+    "@types/jest": "^27.4.1",
     "axios": "^0.23.0",
     "discord.js": "^13.2.0",
     "docsify-cli": "^4.4.3",
