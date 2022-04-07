@@ -116,7 +116,7 @@ export class pages {
     send(options: PagesSendOptions): Promise<void>;
 }
 
-export function autoSplitPages(forValue: IterableIterator, template: () => string | Promise<string>, textPerPagePercent: number): Promise<{
+export function autoSplitPages(forValue: IterableIterator, template: () => string | Promise<string>, textPerPagePercent?: number): Promise<{
     toEmbeds: () => MessageEmbed[],
     raw: string[]
 }>
